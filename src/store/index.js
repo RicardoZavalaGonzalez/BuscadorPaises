@@ -1,11 +1,13 @@
 import { createStore } from 'vuex';
 
+// metodo global para emitir variables y funciones
 export default createStore({
+    // estados
     state: {
         paises: [],
         paisesFiltrados: [],
     },
-
+    // funcciones
     mutations: {
         setPaises(state, payload) {
             state.paises = payload;
@@ -28,21 +30,23 @@ export default createStore({
         },
 
         filtrarRegion({ commit, state }, region) {
-            const filtro = state.paises.filter((pais) => {
+            const filtro = state.paises.filter(pais => {
                 return pais.region.includes(region);
             });
             // console.log(filtro);
+            // envia el valor a la mutacion
             commit('setPaisesFiltrados', filtro);
         },
 
         filtrarPais({ commit, state }, pais) {
             const paisCliente = pais.toLowerCase();
-            const filtro = state.paises.filter((pais) => {
+            const filtro = state.paises.filter(pais => {
                 const paisApi = pais.name.toLowerCase();
                 if (paisApi.includes(paisCliente)) {
                     return pais;
                 }
             });
+            // envia el valor a la mutacion
             commit('setPaisesFiltrados', filtro);
         },
     },

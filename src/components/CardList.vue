@@ -17,6 +17,7 @@ export default {
     },
 
     setup() {
+        // obtiene los valores del store
         const store = useStore();
         const paises = computed(() => {
             //   return store.state.paises;
